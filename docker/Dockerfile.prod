@@ -1,0 +1,16 @@
+FROM ubuntu:focal as builder
+
+COPY . /build
+WORKDIR /build
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+RUN apt-get -y update && apt-get -y install curl build-essential && \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
+    curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh && \
+    wasm-pack build --target web
+    
+FROM nginx
+
+COPY static /usr/share/nginx/html/alphabet-game/static
+COPY index.html /usr/share/nginx/html/alphabet-game/  
+COPY --from=builder /build/pkg /usr/share/nginx/html/alphabet-game/pkg

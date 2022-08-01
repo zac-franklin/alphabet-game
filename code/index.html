@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Alphabet Game</title>
+                <link href="/css/roonr.css" rel="stylesheet">
+	        <link href="/css/comic.css" rel="stylesheet">
+	        <link href="/style.css" rel="stylesheet">
+		<link href="static/style.css" rel="stylesheet">
+	</head>
+	<body>
+                <div class="comic-container blogs" style="margin-top:10px;margin-bottom:10px;">
+	                <div class="comic" text="Alphabet Game">
+				Alphabet Game
+			</div>
+		</div>
+
+		<div id="app" class="center" style="visibility:hidden;">
+			<div id="intro">
+				<p style="margin-top:10px;">
+					This game, inspired by Emma. 
+				</p>
+			
+				<p style="margin-top:40px;">
+					<b>Goal of the game:</b> Unscramble the letters to make the desired word.
+				</p>
+
+				<p style="margin-top:10px;">
+					<i>Notes:</i> Only the scrambled letters are allowd to be entered. 
+				</p>
+
+
+			</div>
+
+		
+			<div id="gameboard" style="margin-top:40px;font-size:32px;">
+			</div>
+
+			<div id="guessboard" style="margin-top:10px;">
+			</div>
+ 
+			<div id="winnings" style="visibility:hidden;margin-top:40px;">
+				<div class="comic-container blogs" style="margin-top:10px;margin-bottom:10px;">
+					<div class="comic" text="Smarty Pants!">
+						Smarty Pants!
+					</div>
+				</div>
+
+				<p style="margin-top:20px;">
+					Look at the brains on you! Here is a picture of my dog, Patrick, as a reward. 
+				</p>
+				<img style="margin-top:20px;height:350px;" src="static/images/patrick_alphabet.jpg" alt="Patrick the doggo" />
+			</div>
+		</div>
+
+		<script type="module">
+			import init from './pkg/megan.js';
+
+			async function run () {
+			    await init();
+			}
+
+			run();
+
+		</script>
+	</body>
+</html>
