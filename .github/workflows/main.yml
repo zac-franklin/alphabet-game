@@ -35,7 +35,7 @@ jobs:
       
         - uses: actions/checkout@v2
           with:
-           repository: 'zacfpearson/megan-manifests'
+           repository: 'zacfpearson/alphabet-manifests'
            token: ${{ secrets.ACTION_TOKEN }}
            path: alphabet-manifests
            fetch-depth: 0
