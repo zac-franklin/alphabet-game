@@ -60,8 +60,14 @@ fn setup_choice_board(scrambled_word: String, document: &Document) {
             .create_element("button")
             .expect("should be able to create choice button for letter");
 
-        choice_button.set_attribute("id", &choice_id).expect("should be able to set choice button id");
-        choice_button.set_attribute("class", "choice_button").expect("should be able to set choice button class to choice_button");
+        choice_button
+            .set_attribute("id", &choice_id)
+            .expect("should be able to set choice button id");
+
+        choice_button
+            .set_attribute("class", "choice_button")
+            .expect("should be able to set choice button class to choice_button");
+
         choice_button.set_text_content(Some(&letter.to_string()));
 
         choice_board
@@ -70,11 +76,19 @@ fn setup_choice_board(scrambled_word: String, document: &Document) {
     }
 
     let backspace_choice_id = generate_choice_id(&"backspace".to_string());
+
     let backspace_button = document
         .create_element("button")
         .expect("could not create backspace button");
-    backspace_button.set_attribute("id", &backspace_choice_id).expect("should be able to set backspace button id");
-    backspace_button.set_attribute("class", "backspace_button").expect("should be able to set backspace button class to backspace_button");
+
+    backspace_button
+        .set_attribute("id", &backspace_choice_id)
+        .expect("should be able to set backspace button id");
+
+    backspace_button
+        .set_attribute("class", "backspace_button")
+        .expect("should be able to set backspace button class to backspace_button");
+
     backspace_button.set_text_content(Some("<-"));
 
     choice_board
@@ -95,9 +109,8 @@ fn setup_listeners(correct_word: String, document: &Document) {
             .get_element_by_id("winnings")
             .expect("should have winnings element on the page");
 
-        let owned_correct_word = correct_word.to_owned();
+        let correct_word = correct_word.to_owned();
         
-        //move to setup listeners
         let handle_guess = Closure::<dyn FnMut(web_sys::Event)>::new(
             move |event: web_sys::Event| {
                 let target_element = event
@@ -115,7 +128,7 @@ fn setup_listeners(correct_word: String, document: &Document) {
                         if curr_guess_div.inner_html() == "" {
                             curr_guess_div.set_inner_html(&letter.to_string());
                             if let None = curr_guess_div.next_element_sibling() {
-                                if check_win(&guess_element_children, owned_correct_word.to_string()) {
+                                if check_win(&guess_element_children, correct_word.to_string()) {
                                     winnings_element
                                         .dyn_ref::<HtmlElement>()
                                         .expect("winnings_element should be an HtmlElement")
@@ -174,7 +187,7 @@ fn setup_listeners(correct_word: String, document: &Document) {
 
     handle_backspace.forget();
 
-    let owned_correct_word = correct_word.to_owned();
+    let correct_word = correct_word.to_owned();
 
     let redirect_key_to_click = Closure::<dyn FnMut(web_sys::KeyboardEvent)>::new(
         move |event: web_sys::KeyboardEvent| {
@@ -186,7 +199,7 @@ fn setup_listeners(correct_word: String, document: &Document) {
 
             let key_lower = key.to_lowercase();
             
-            if owned_correct_word.contains(&key_lower) {
+            if correct_word.contains(&key_lower) {
                 let letter_id = generate_choice_id(&key_lower);
                 key_to_click(&letter_id);
             }
@@ -220,7 +233,10 @@ fn reset_cleared_letter(element: &Element)
 {
     let choice_id = generate_choice_id(&element.inner_html().to_string());
     let window = web_sys::window().expect("no global window exists");
-    let document = window.document().expect("window should have document");
+
+    let document = window
+        .document()
+        .expect("window should have document");
 
     document
         .get_element_by_id(&choice_id)
@@ -234,8 +250,17 @@ fn reset_cleared_letter(element: &Element)
 
 fn key_to_click(id: &str) {
     let window = web_sys::window().expect("no global window exists");
-    let document = window.document().expect("window should have document");
-    document.get_element_by_id(id).expect("should have key value id on the page").dyn_ref::<HtmlElement>().expect("key value id should be HtmlElement").click();
+
+    let document = window
+        .document()
+        .expect("window should have document");
+
+    document
+        .get_element_by_id(id)
+        .expect("should have key value id on the page")
+        .dyn_ref::<HtmlElement>()
+        .expect("key value id should be HtmlElement")
+        .click();
 }
 
 fn generate_choice_id(letter: &String) -> String {
