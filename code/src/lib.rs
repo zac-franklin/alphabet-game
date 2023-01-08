@@ -89,7 +89,7 @@ fn setup_choice_board(scrambled_word: String, document: &Document) {
         .set_attribute("class", "backspace_button")
         .expect("should be able to set backspace button class to backspace_button");
 
-    backspace_button.set_text_content(Some("<-"));
+    backspace_button.set_text_content(Some("←"));
 
     choice_board
         .append_child(&backspace_button)
