@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<title>Alphabet Game</title>
         <link href="/css/roonr.css" rel="stylesheet">
 		<link href="/css/comic.css" rel="stylesheet">
 	    <link href="/style.css" rel="stylesheet">
 		<link href="static/style.css" rel="stylesheet">
 	</head>
-	<body style="padding:7px;">
+	<body class="noselect" style="padding:7px;">
         <div class="comic-container blogs" style="margin-top:10px;margin-bottom:10px;">
 	        <div class="comic" text="Alphabet Game">
 				Alphabet Game
@@ -48,7 +48,7 @@
 		</div>
 
 		<script type="module">
-			import init from './pkg/alphabet_game.js';
+			import init from './pkg/alphabet-game.js';
 
 			async function run () {
 			    await init();
