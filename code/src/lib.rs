@@ -105,6 +105,14 @@ fn setup_listeners(correct_word: String, document: &Document) {
             .expect("should have guess_board element on the page")
             .children();
 
+        let choice_board = document
+            .get_element_by_id("choice_board")
+            .expect("should have choice_board element on the page");
+
+        let backspace_button = document
+            .get_element_by_id("backspace_button")
+            .expect("should have backspace_button element on the page");
+
         let winnings_element = document
             .get_element_by_id("winnings")
             .expect("should have winnings element on the page");
@@ -129,6 +137,18 @@ fn setup_listeners(correct_word: String, document: &Document) {
                             curr_guess_div.set_inner_html(&letter.to_string());
                             if let None = curr_guess_div.next_element_sibling() {
                                 if check_win(&guess_element_children, correct_word.to_string()) {
+                                    backspace_button
+                                        .dyn_ref::<HtmlButtonElement>()
+                                        .expect("backspace_button should be a button element")
+                                        .set_disabled(false);
+
+                                    choice_board
+                                        .dyn_ref::<HtmlElement>()
+                                        .expect("choice_board should be an HtmlElement")
+                                        .style()
+                                        .set_property("display", "none")
+                                        .expect("should be able to set choice_board display style to none");
+
                                     winnings_element
                                         .dyn_ref::<HtmlElement>()
                                         .expect("winnings_element should be an HtmlElement")
