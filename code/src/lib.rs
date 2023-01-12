@@ -117,6 +117,10 @@ fn setup_listeners(correct_word: String, document: &Document) {
             .get_element_by_id("winnings")
             .expect("should have winnings element on the page");
 
+        let snack_element = document
+            .get_element_by_id("snackbar")
+            .expect("should have winnings element on the page");
+
         let correct_word = correct_word.to_owned();
         
         let handle_guess = Closure::<dyn FnMut(web_sys::Event)>::new(
@@ -155,6 +159,13 @@ fn setup_listeners(correct_word: String, document: &Document) {
                                         .style()
                                         .set_property("visibility", "visible")
                                         .expect("should be able to set winnings_element style to visible");
+                                } else {
+                                    snack_element
+                                        .dyn_ref::<HtmlElement>()
+                                        .expect("snackbar should be an HtmlElement")
+                                        .style()
+                                        .set_property("visibility", "visible")
+                                        .expect("should be able to set snack_element visibility to visible");
                                 }
                             }
                             break;
@@ -191,6 +202,20 @@ fn setup_listeners(correct_word: String, document: &Document) {
                         }
                     } else {
                         reset_cleared_letter(&curr_guess_div);
+                        let window = web_sys::window().expect("no global window exists");
+                        let document = window
+                            .document()
+                            .expect("window should have document");
+
+                        document
+                            .get_element_by_id("snackbar")
+                            .expect("should have winnings element on the page")
+                            .dyn_ref::<HtmlElement>()
+                            .expect("snackbar should be an HtmlElement")
+                            .style()
+                            .set_property("visibility", "hidden")
+                            .expect("should be able to set snack_element visibility to hidden");
+
                         break;
                     }
                 }
