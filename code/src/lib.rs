@@ -144,7 +144,7 @@ fn setup_listeners(correct_word: String, document: &Document) {
                                     backspace_button
                                         .dyn_ref::<HtmlButtonElement>()
                                         .expect("backspace_button should be a button element")
-                                        .set_disabled(false);
+                                        .set_disabled(true);
 
                                     choice_board
                                         .dyn_ref::<HtmlElement>()
