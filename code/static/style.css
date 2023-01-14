@@ -11,6 +11,7 @@
     background-color:#FD7014;
     font-weight:bold;
     aspect-ratio: 2;
+    touch-action: manipulation;
 }
 .choice_button{
     flex-basis: 20%;
@@ -26,6 +27,7 @@
     text-transform: uppercase;
     font-weight:bold;
     aspect-ratio: 1;
+    touch-action: manipulation;
 }
 .guess_div{
     flex: 1;
@@ -39,6 +41,7 @@
     text-transform: uppercase;
     font-weight: bold;
     aspect-ratio: 1;
+    touch-action: manipulation;
 }
 .guess_board{
     display: flex;
