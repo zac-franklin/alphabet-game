@@ -1,1 +1,74 @@
-.backspace_button{display:inline-block;vertical-align:top;font-size:42px;height:75px;width:150px;padding:2px;margin-top:7px;border-width:2px;border-style:solid;background-color:#FD7014;font-weight:bold;}.choice_button{display:inline-block;vertical-align:top;font-size:42px;height:75px;width:75px;padding:2px;margin:7px;border-width:2px;border-style:solid;background-color: #FD7014;text-transform: uppercase;font-weight:bold;}.guess_div{display:inline-block;vertical-align:top;font-size:42px;height:42px;width:42px;padding:2px;border-width:2px;border-style:solid;text-transform: uppercase;font-weight: bold;}.guess_board{margin: 0 auto;text-align:center;width:100%;max-width:400px;}.choice_board{text-align:center;margin: 0 auto;width:100%;max-width:400px;}button:disabled,button[disabled]{background-color:#FD7014;color: #FD7014;}.snackbar{visibility:hidden;width: 100%;max-width: 200px;margin: 0 auto;text-align: center;padding: 7px;z-index: 1;font-size: 17px;margin-top: 7px;margin-bottom: 7px;}
+.backspace_button{
+    flex-basis: 40%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: calc(32px + .6vw);
+    padding:2px;
+    margin-top:7px;
+    border-width:2px;
+    border-style:solid;
+    background-color:#FD7014;
+    font-weight:bold;
+    aspect-ratio: 2;
+}
+.choice_button{
+    flex-basis: 20%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: calc(32px + .6vw);
+    padding:2px;
+    margin:7px;
+    border-width:2px;
+    border-style:solid;
+    background-color: #FD7014;
+    text-transform: uppercase;
+    font-weight:bold;
+    aspect-ratio: 1;
+}
+.guess_div{
+    flex: 1;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: calc(32px + .6vw);
+    padding:2px;
+    border-width:2px;
+    border-style:solid;
+    text-transform: uppercase;
+    font-weight: bold;
+    aspect-ratio: 1;
+}
+.guess_board{
+    display: flex;
+    text-align:center;
+    margin: 0 auto;
+    width:100%;
+    max-width:600px;
+}
+.choice_board{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    text-align:center;
+    margin: 0 auto;
+    width:100%;
+    max-width:600px;
+}
+button:disabled,button[disabled]{
+    background-color:#FD7014;
+    color: #FD7014;
+}
+.snackbar{
+    visibility:hidden;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 7px;
+    z-index: 1;
+    font-size: 17px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}

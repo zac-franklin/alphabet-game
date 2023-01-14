@@ -1,0 +1,5 @@
+FROM nginx
+
+COPY static /usr/share/nginx/html/alphabet-game/static
+COPY index.html /usr/share/nginx/html/alphabet-game/  
+COPY pkg /usr/share/nginx/html/alphabet-game/pkg
